@@ -4,7 +4,7 @@
 ratio          = [ 1, 4, 3 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
-sort_reverse 	 = false
+sort_reverse   = false
 sort_dir_first = true
 sort_translit  = false
 linemode       = "none"
@@ -14,7 +14,18 @@ scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
 
-
+[preview]
+wrap            = "no"
+tab_size        = 2
+max_width       = 600
+max_height      = 900
+cache_dir       = ""
+image_delay     = 30
+image_filter    = "triangle"
+image_quality   = 75
+sixel_fraction  = 15
+ueberzug_scale  = 1
+ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
@@ -34,6 +45,7 @@ extract = [
 play = [
 	{ run = 'mpc-hc "%1"', orphan = true, for = "windows" },
 ]
+
 [open]
 rules = [
 	# Folder
@@ -45,26 +57,22 @@ rules = [
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
-	{ mime = "application/{,g}zip", use = [ "extract", "reveal" ] },
-	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [ "extract", "reveal" ] },
-	# other
-	{ name="*.json",use = "edit"},
-	{ name="*.html",use = "edit"},
-	{ name="*.css",use = "edit"},
-	{ name="*.js",use = "edit"},
-	{ name="*.toml",use = "edit"},
-	{ name="*.ini",use = "edit"},
-	{ name="*.log",use = ["edit","reveal"]},
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
+	# JSON
+	{ mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
+	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
 	# Empty file
-	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
 	# Fallback
-	{ name = "*", use = [ "edit","reveal" ] },
+	{ name = "*", use = [ "open", "reveal" ] },
+	# other
+
 ]
 
 [tasks]
 micro_workers    = 10
-macro_workers    = 25
-bizarre_retry    = 5
+macro_workers    = 10
+bizarre_retry    = 3
 image_alloc      = 536870912  # 512MB
 image_bound      = [ 0, 0 ]
 suppress_preload = false
@@ -86,11 +94,6 @@ create_offset = [ 0, 2, 50, 3 ]
 rename_title  = "Rename:"
 rename_origin = "hovered"
 rename_offset = [ 0, 1, 50, 3 ]
-
-# trash
-trash_offset = [0, 2, 50, 3]
-trash_origin = "top-center"
-trash_title  = "Move {n} selected file{s} to trash? (y/N)"
 
 # filter
 filter_title  = "Filter:"
@@ -119,17 +122,19 @@ trash_origin	= "center"
 trash_offset	= [ 0, 0, 70, 20 ]
 
 # delete
-delete_title 	= "Delete {n} selected file{s} permanently? (y/N)"
+delete_title 	= "Permanently delete {n} selected file{s}?"
 delete_origin	= "center"
 delete_offset	= [ 0, 0, 70, 20 ]
 
 # overwrite
-overwrite_title   = "Overwrite an existing file? (y/N)"
+overwrite_title   = "Overwrite file?"
+overwrite_content = "Will overwrite the following file:"
 overwrite_origin  = "center"
 overwrite_offset  = [ 0, 0, 50, 15 ]
 
 # quit
-quit_title   = "{n} task{s} running, sure to quit? (y/N)"
+quit_title   = "Quit?"
+quit_content = "The following tasks are still running, are you sure you want to quit?"
 quit_origin  = "center"
 quit_offset  = [ 0, 0, 50, 15 ]
 
