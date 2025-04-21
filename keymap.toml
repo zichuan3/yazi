@@ -59,8 +59,8 @@ keymap = [
 
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 
-	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
-	{ on = ":",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
+	{ on = ":",         run = "shell --interactive",         desc = "Run a shell command" },
+	{ on = ";",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
 	{ on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "f",         run = "search --via=fd",             desc = "Search files by name using fd" },
 	{ on = "F",         run = "search --via=rg",             desc = "Search files by content using ripgrep" },
@@ -201,7 +201,7 @@ keymap = [
 [input]
 
 keymap = [
-{ on = "<C-c>",   run = "close",          desc = "Cancel input" },
+	{ on = "<C-c>",   run = "close",          desc = "Cancel input" },
 	{ on = "<Enter>", run = "close --submit", desc = "Submit input" },
 	{ on = "<Esc>",   run = "escape",         desc = "Back to normal mode, or cancel input" },
 	{ on = "<C-[>",   run = "escape",         desc = "Back to normal mode, or cancel input" },
