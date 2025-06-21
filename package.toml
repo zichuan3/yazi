@@ -3,5 +3,10 @@ use = "yazi-rs/plugins:toggle-pane"
 rev = "a54b96a"
 hash = "a65dc998e4742a4f6561623e6154e1b9"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "3d1efb7"
+hash = "337259992d918f0b6d68d1a1b80e219e"
+
 [flavor]
 deps = []

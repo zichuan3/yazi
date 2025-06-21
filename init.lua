@@ -6,3 +6,8 @@ Status:children_add(function(self)
 		return ""
 	end
 end, 3300, Status.LEFT)
+-- git.yazi
+th.git = th.git or {}
+th.git.modified_sign = "M"
+th.git.deleted_sign = "D"
+require("git"):setup()
