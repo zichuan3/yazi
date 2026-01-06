@@ -1,6 +1,7 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
 [mgr]
 
 prepend_keymap = [
@@ -40,7 +41,7 @@ keymap = [
 
 
 	# Toggle
-	{ on = "<Space>", run = [ "toggle", "arrow next" ], desc = "Toggle the current selection state" },
+	{ on = "<Space>", run = [ "toggle", "arrow 1" ], desc = "Toggle the current selection state" },
 	{ on = "<C-a>",   run = "toggle_all --state=on",    desc = "Select all files" },
 	{ on = "<C-r>",   run = "toggle_all",               desc = "Invert selection of all files" },
 
@@ -101,7 +102,7 @@ keymap = [
 	{ on = "N", run = "find_arrow --previous",   desc = "Previous found" },
 
 	# Sorting
-    { on = [ ",", "m" ], run = [ "sort mtime --reverse=no", "linemode mtime" ], desc = "Sort by modified time" },
+  { on = [ ",", "m" ], run = [ "sort mtime --reverse=no", "linemode mtime" ], desc = "Sort by modified time" },
 	{ on = [ ",", "M" ], run = [ "sort mtime --reverse", "linemode mtime" ],    desc = "Sort by modified time (reverse)" },
 	{ on = [ ",", "b" ], run = [ "sort btime --reverse=no", "linemode btime" ], desc = "Sort by birth time" },
 	{ on = [ ",", "B" ], run = [ "sort btime --reverse", "linemode btime" ],    desc = "Sort by birth time (reverse)" },
@@ -119,10 +120,10 @@ keymap = [
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
-	{ on = [ "g", "d" ],       run = "cd D:",            desc = "Go to the D drive" },
+	{ on = [ "g", "d" ],       run = "cd D:/DeskTop/",            desc = "Go to the D drive" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
-    { on = [ "g", "f" ],       run = "cd F:",            desc = "Go to the F drive" },
-    { on = [ "g", "s" ],       run = "follow",           desc = "Follow hovered symlink" },
+  { on = [ "g", "f" ],       run = "cd F:",            desc = "Go to the F drive" },
+  { on = [ "g", "s" ],       run = "follow",           desc = "Follow hovered symlink" },
 
     # Tabs
 	{ on = "t", run = "tab_create --current", desc = "Create a new tab with cmd" },
@@ -275,7 +276,7 @@ keymap = [
 	{ on = "D", run = [ "delete --cut", "move eol" ],              desc = "Cut until EOL" },
 	{ on = "c", run = "delete --cut --insert",                     desc = "Cut selected characters, and enter insert mode" },
 	{ on = "C", run = [ "delete --cut --insert", "move eol" ],     desc = "Cut until EOL, and enter insert mode" },
-    { on = "s", run = [ "delete --cut --insert", "move 1" ],               desc = "Cut current character, and enter insert mode" },
+  { on = "s", run = [ "delete --cut --insert", "move 1" ],       desc = "Cut current character, and enter insert mode" },
 	{ on = "S", run = [ "move bol", "delete --cut --insert", "move eol" ], desc = "Cut from BOL until EOL, and enter insert mode" },
 	{ on = "x", run = [ "delete --cut", "move 1 --in-operating" ], desc = "Cut current character" },
 	{ on = "y", run = "yank",                                      desc = "Copy selected characters" },
@@ -283,7 +284,8 @@ keymap = [
 	{ on = "P", run = "paste --before",                            desc = "Paste copied characters before the cursor" },
 
 	# Undo/Redo
-	{ on = "u",     run = "undo", desc = "Undo the last operation" },
+	{ on = "u",     run = ["undo","casefy lower"], desc = "Undo , or lowercase if in visual mode" },
+  { on = "U",     run = "casefy upper",             desc = "Uppercase" },
 	{ on = "<C-r>", run = "redo", desc = "Redo the last operation" },
 
 	# Help
@@ -316,14 +318,11 @@ keymap = [
 	{ on = "<Tab>",   run = "close --submit",                             desc = "Submit the completion" },
 	{ on = "<Enter>", run = [ "close --submit", "input:close --submit" ], desc = "Complete and submit the input" },
 
-	{ on = "<A-k>", run = "arrow prev", desc = "Previous item" },
-	{ on = "<A-j>", run = "arrow next", desc = "Next item" },
+	{ on = "<c-k>", run = "arrow prev", desc = "Previous item" },
+	{ on = "<c-j>", run = "arrow next", desc = "Next item" },
 
 	{ on = "<Up>",   run = "arrow prev", desc = "Previous item" },
 	{ on = "<Down>", run = "arrow next", desc = "Next item" },
-
-	{ on = "<C-p>", run = "arrow prev", desc = "Previous item" },
-	{ on = "<C-n>", run = "arrow next", desc = "Next item" },
 
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
