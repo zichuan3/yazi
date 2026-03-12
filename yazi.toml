@@ -38,6 +38,9 @@ ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
+tabview = [
+  { run = "tw %s1", desc = "TabView",for="windows",block= true},
+]
 edit = [
 	{ run = "nvim  %s1", desc = "Nvim", for="windows",block = true },
 	# { run = "code %s", desc = "vscode", for = "windows",orphan = true },
@@ -60,6 +63,14 @@ download = [
 ]
 
 [open]
+prepend_rules = [
+  { url = "*.csv",use = "tabview" },
+  { url = "*.json",use = "tabview" },
+  { url = "*.jsonnl",use = "tabview" },
+  { url = "*.xls",use = "tabview" },
+  { url = "*.xlsx",use = "tabview" },
+]
+
 rules = [
   # Folder
 	{ url = "*/", use = [ "edit", "open", "reveal" ] },
