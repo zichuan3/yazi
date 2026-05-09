@@ -1,1 +1,6 @@
-[services]
+[services.bpmpre]
+type = "sftp"
+host = "172.20.255.108"
+user = "root"
+port = 22
+key_file = "~/bpmpre_ssh_key"

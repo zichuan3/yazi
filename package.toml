@@ -8,5 +8,10 @@ use = "yazi-rs/plugins:git"
 rev = "3d1efb7"
 hash = "337259992d918f0b6d68d1a1b80e219e"
 
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "a837101"
+hash = "d396365cef932fce588b80df69438f2e"
+
 [flavor]
 deps = []
